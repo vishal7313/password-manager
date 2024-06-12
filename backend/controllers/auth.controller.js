@@ -31,6 +31,7 @@ export const signup = async (req, res) => {
 		});
 
         if (newUser) {
+			// generate JWT Token
 			await newUser.save();
 
 			res.status(201).json({
