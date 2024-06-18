@@ -6,8 +6,12 @@ const Manager = () => {
         ></div>
 
         <div className="mx-auto bg-slate-50 mycontainer">
-            <h1>Pass OP</h1>
-            <p>My own Password Manager </p>
+            <h1 className="text-4xl text font-bold text-center">
+                <span className="text-green-700">&lt;</span>
+                    Pass
+                <span className="text-green-700">OP/&gt;</span>
+            </h1>
+            <p className="text-green-900 text-center font-bold">My own Password Manager </p>
             <div className="text-white flex flex-col p-4">
                 <input className="rounded-full" type="text" name="" id="" />
                 <div className="flex">
