@@ -12,13 +12,13 @@ const Manager = () => {
                 <span className="text-green-700">OP/&gt;</span>
             </h1>
             <p className="text-green-900 text-center font-bold">My own Password Manager </p>
-            <div className="text-white flex flex-col p-4">
-                <input className="rounded-full" type="text" name="" id="" />
-                <div className="flex">
-                    <input type="text" name="" id="" />
-                    <input type="text" name="" id="" />
+            <div className="flex flex-col p-4 text-black gap-6">
+                <input className="rounded-full border border-green-600 w-full p-4 py-1" type="text" name="" id="" />
+                <div className="flex w-full justify-between gap-8">
+                    <input className="rounded-full border border-green-600 w-full p-4 py-1" type="text" name="" id="" />
+                    <input className="rounded-full border border-green-600 w-full p-4 py-1" type="text" name="" id="" />
                 </div>
-                
+                <button>Add Password</button>
             </div>
         </div>
         </>
