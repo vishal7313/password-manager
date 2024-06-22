@@ -36,7 +36,9 @@ const Manager = () => {
                                 name=""
                                 id=""
                             />
-                            <span className="absolute right-0">Show</span>
+                            <span className="absolute right-[3px] top-[4px] cursor-pointer">
+                                <img className='p-1' width={30} src="icons/eye.png" alt="eye" />
+                            </span>
                         </div>
                     </div>
                     <button className="flex justify-center items-center gap-2 bg-green-400 hover:bg-green-200 rounded-full px-8 py-2 w-fit border border-green-900">
