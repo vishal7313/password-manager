@@ -1,4 +1,16 @@
+import { useRef } from "react";
+
 const Manager = () => {
+    const ref = useRef();
+    const showPassword = () => {
+        alert("Password: Pssword");
+        if (ref.current.src.includes("icons/eyecross.png")) {
+            ref.current.src = "icons/eye.png"
+        } else {
+            ref.current.src = "icons/eyecross.png"
+        }
+
+    }
     return (
         <>
             <div
@@ -36,8 +48,8 @@ const Manager = () => {
                                 name=""
                                 id=""
                             />
-                            <span className="absolute right-[3px] top-[4px] cursor-pointer">
-                                <img className='p-1' width={30} src="icons/eye.png" alt="eye" />
+                            <span className="absolute right-[3px] top-[4px] cursor-pointer" onClick={showPassword}>
+                                <img ref={ref} className='p-1' width={30} src="icons/eye.png" alt="eye" />
                             </span>
                         </div>
                     </div>
