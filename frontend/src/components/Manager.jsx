@@ -9,7 +9,10 @@ const Manager = () => {
         } else {
             ref.current.src = "icons/eyecross.png"
         }
+    }
 
+    const savePassword = () => {
+        
     }
     return (
         <>
@@ -53,7 +56,7 @@ const Manager = () => {
                             </span>
                         </div>
                     </div>
-                    <button className="flex justify-center items-center gap-2 bg-green-400 hover:bg-green-200 rounded-full px-8 py-2 w-fit border border-green-900">
+                    <button onClick={savePassword} className="flex justify-center items-center gap-2 bg-green-400 hover:bg-green-200 rounded-full px-8 py-2 w-fit border border-green-900">
                         <lord-icon
                             src="https://cdn.lordicon.com/jgnvfzqg.json"
                             trigger="hover">
