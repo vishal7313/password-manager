@@ -1,9 +1,18 @@
 import bcrypt from "bcryptjs";
 import PasswordManager from "../models/passwordManager.model.js";
+import isUrl from 'is-url';
 
 export const passwordManager = async (req, res) => {
     try {
         const {wesbiteURL, username, password } = req.body;
+
+		if (!isUrl(wesbiteURL)) {
+			return res.status(400).json({ error: 'Invalid website URL.' });
+		}
+
+		if (!username || !password) {
+			return res.status(400).json({ error: 'One for more field is missing data.' });
+		}
 
         // HASH PASSWORD HERE
         const salt = await bcrypt.genSalt(10);
