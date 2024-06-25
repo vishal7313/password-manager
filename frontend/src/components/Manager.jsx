@@ -1,7 +1,9 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const Manager = () => {
     const ref = useRef();
+    const [form, setForm] = useState({site: "", username: "", password: "" })
+
     const showPassword = () => {
         alert("Password: Pssword");
         if (ref.current.src.includes("icons/eyecross.png")) {
@@ -12,7 +14,12 @@ const Manager = () => {
     }
 
     const savePassword = () => {
-        
+        console.log(form);
+    }
+
+    const handleChange = (e) => {
+        setForm({...form, [e.target.name]: e.target.value})
+
     }
     return (
         <>
@@ -32,24 +39,30 @@ const Manager = () => {
                         placeholder="Enter website URL"
                         className="rounded-full border border-green-600 w-full p-4 py-1"
                         type="text"
-                        name=""
+                        name="site"
                         id=""
+                        value={form.site}
+                        onChange={handleChange}
                     />
                     <div className="flex w-full justify-between gap-8">
                         <input
                             placeholder="Enter username"
                             type="textbox"
                             className="rounded-full border border-green-600 w-full p-4 py-1"
-                            name=""
+                            name="username"
                             id=""
+                            value={form.username}
+                            onChange={handleChange}
                         />
                         <div className="relative">
                             <input
                                 placeholder="Enter password"
                                 type="password"
                                 className="rounded-full border border-green-600 w-full p-4 py-1"
-                                name=""
+                                name="password"
                                 id=""
+                                value={form.password}
+                                onChange={handleChange} 
                             />
                             <span className="absolute right-[3px] top-[4px] cursor-pointer" onClick={showPassword}>
                                 <img ref={ref} className='p-1' width={30} src="icons/eye.png" alt="eye" />
