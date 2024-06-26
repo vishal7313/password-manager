@@ -5,11 +5,12 @@ const Manager = () => {
     const [form, setForm] = useState({site: "", username: "", password: "" })
 
     const showPassword = () => {
-        alert("Password: Pssword");
         if (ref.current.src.includes("icons/eyecross.png")) {
             ref.current.src = "icons/eye.png"
+            document.getElementById("password").type = "password";
         } else {
             ref.current.src = "icons/eyecross.png"
+            document.getElementById("password").type = "text";
         }
     }
 
@@ -60,7 +61,7 @@ const Manager = () => {
                                 type="password"
                                 className="rounded-full border border-green-600 w-full p-4 py-1"
                                 name="password"
-                                id=""
+                                id="password"
                                 value={form.password}
                                 onChange={handleChange} 
                             />
