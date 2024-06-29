@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const Manager = () => {
     const ref = useRef();
-    const [form, setForm] = useState({site: "", username: "", password: "" })
+    const [form, setForm] = useState({ site: "", username: "", password: "" })
     const [passwordArray, setPasswordArray] = useState([]);
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const Manager = () => {
     }
 
     const handleChange = (e) => {
-        setForm({...form, [e.target.name]: e.target.value})
+        setForm({ ...form, [e.target.name]: e.target.value })
 
     }
     return (
@@ -74,7 +74,7 @@ const Manager = () => {
                                 name="password"
                                 id="password"
                                 value={form.password}
-                                onChange={handleChange} 
+                                onChange={handleChange}
                             />
                             <span className="absolute right-[3px] top-[4px] cursor-pointer" onClick={showPassword}>
                                 <img ref={ref} className='p-1' width={30} src="icons/eye.png" alt="eye" />
@@ -88,7 +88,36 @@ const Manager = () => {
                         </lord-icon>
                         Add Password
                     </button>
-                    
+                </div>
+
+                <div className="passwords">
+                    <h2>Your Password</h2>
+                    <table className="table-auto w-full rounded-xl overflow-hidden">
+                        <thead className="bg-green-800 text-white">
+                            <tr>
+                                <th className="py-2">Song</th>
+                                <th className="py-2">Artist</th>
+                                <th className="py-2">Year</th>
+                            </tr>
+                        </thead>
+                        <tbody className="bg-green-100 text-black">
+                            <tr>
+                                <td className="py-2 border boerder-white text-center w-32">The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                                <td className="py-2 border boerder-white text-center w-32">Malcolm Lockyer</td>
+                                <td className="py-2 border boerder-white text-center w-32">1961</td>
+                            </tr>
+                            <tr>
+                                <td className="py-2 border boerder-white text-center w-32">Witchy Woman</td>
+                                <td className="py-2 border boerder-white text-center w-32">The Eagles</td>
+                                <td className="py-2 border boerder-white text-center w-32">1972</td>
+                            </tr>
+                            <tr>
+                                <td className="py-2 border boerder-white text-center w-32">Shining Star</td>
+                                <td className="py-2 border boerder-white text-center w-32">Earth, Wind, and Fire</td>
+                                <td className="py-2 border boerder-white text-center w-32">1975</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </>
