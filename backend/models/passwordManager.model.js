@@ -5,6 +5,10 @@ const passwordManagerSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    websiteName: {
+        type: String,
+        required: true
+    },
     username: {
         type: String,
         required: true
