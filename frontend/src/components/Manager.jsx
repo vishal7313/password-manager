@@ -102,27 +102,21 @@ const Manager = () => {
                         <table className="table-auto w-full rounded-xl overflow-hidden">
                             <thead className="bg-green-800 text-white">
                                 <tr>
-                                    <th className="py-2">Song</th>
-                                    <th className="py-2">Artist</th>
-                                    <th className="py-2">Year</th>
+                                    <th className="py-2">Website URL</th>
+                                    <th className="py-2">Username</th>
+                                    <th className="py-2">Password</th>
                                 </tr>
                             </thead>
                             <tbody className="bg-green-100 text-black">
-                                <tr>
-                                    <td className="py-2 border boerder-white text-center w-32">The Sliding Mr. Bones (Next Stop, Pottersville)</td>
-                                    <td className="py-2 border boerder-white text-center w-32">Malcolm Lockyer</td>
-                                    <td className="py-2 border boerder-white text-center w-32">1961</td>
-                                </tr>
-                                <tr>
-                                    <td className="py-2 border boerder-white text-center w-32">Witchy Woman</td>
-                                    <td className="py-2 border boerder-white text-center w-32">The Eagles</td>
-                                    <td className="py-2 border boerder-white text-center w-32">1972</td>
-                                </tr>
-                                <tr>
-                                    <td className="py-2 border boerder-white text-center w-32">Shining Star</td>
-                                    <td className="py-2 border boerder-white text-center w-32">Earth, Wind, and Fire</td>
-                                    <td className="py-2 border boerder-white text-center w-32">1975</td>
-                                </tr>
+                                {
+                                    passwordArray.map((item, index) => {
+                                        return <tr key={index}>
+                                            <td className="py-2 border boerder-white text-center w-32">{item.site}</td>
+                                            <td className="py-2 border boerder-white text-center w-32">{item.username}</td>
+                                            <td className="py-2 border boerder-white text-center w-32">{item.password}</td>
+                                        </tr>;
+                                    })
+                                }
                             </tbody>
                         </table>
                     }
