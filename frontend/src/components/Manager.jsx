@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState } from "react";
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Manager = () => {
     const ref = useRef();
@@ -35,10 +38,36 @@ const Manager = () => {
     }
 
     const copyText = (text) => {
+        toast('Copied to Clipboard', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: "Bounce"
+            });
         navigator.clipboard.writeText(text);
     }
     return (
         <>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition= "Bounce"
+            />
+            {/* Same as */}
+            <ToastContainer />
             <div
                 className="absolute inset-0 -z-10 h-full w-full bg-green-50 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"
             ></div>
@@ -103,7 +132,7 @@ const Manager = () => {
 
                     {
                         passwordArray.length !== 0 &&
-                    
+
                         <table className="table-auto w-full rounded-xl overflow-hidden">
                             <thead className="bg-green-800 text-white">
                                 <tr>
@@ -121,12 +150,12 @@ const Manager = () => {
                                                     <a href={item.site} target="_blank" rel="noreferrer">
                                                         {item.site}
                                                     </a>
-                                                    <div className="lordiconcopy size-7 cursor-pointer" onClick={() => {copyText(item.site)}}>
+                                                    <div className="lordiconcopy size-7 cursor-pointer" onClick={() => { copyText(item.site) }}>
                                                         <lord-icon
-                                                            style={{"width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px"}}
+                                                            style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
                                                             className={"cursor-pointer"}
                                                             src="https://cdn.lordicon.com/iykgtsbt.json"
-                                                            trigger="hover">    
+                                                            trigger="hover">
                                                         </lord-icon>
                                                     </div>
                                                 </div>
@@ -134,12 +163,12 @@ const Manager = () => {
                                             <td className="py-2 border boerder-white text-center">
                                                 <div className="flex items-center justify-center">
                                                     <span>{item.username}</span>
-                                                    <div className="lordiconcopy size-7 cursor-pointer" onClick={() => {copyText(item.username)}}>
+                                                    <div className="lordiconcopy size-7 cursor-pointer" onClick={() => { copyText(item.username) }}>
                                                         <lord-icon
-                                                            style={{"width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px"}}
+                                                            style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
                                                             className={"cursor-pointer"}
                                                             src="https://cdn.lordicon.com/iykgtsbt.json"
-                                                            trigger="hover">    
+                                                            trigger="hover">
                                                         </lord-icon>
                                                     </div>
                                                 </div>
@@ -147,12 +176,12 @@ const Manager = () => {
                                             <td className="flex items-center justify-center py-2 border boerder-white text-center">
                                                 <div className="flex items-center justify-center">
                                                     <span>{item.password}</span>
-                                                    <div className="lordiconcopy size-7 cursor-pointer" onClick={() => {copyText(item.password)}}>
+                                                    <div className="lordiconcopy size-7 cursor-pointer" onClick={() => { copyText(item.password) }}>
                                                         <lord-icon
-                                                            style={{"width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px"}}
+                                                            style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
                                                             className={"cursor-pointer"}
                                                             src="https://cdn.lordicon.com/iykgtsbt.json"
-                                                            trigger="hover">    
+                                                            trigger="hover">
                                                         </lord-icon>
                                                     </div>
                                                 </div>
