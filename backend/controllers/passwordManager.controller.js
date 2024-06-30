@@ -4,13 +4,13 @@ import isUrl from 'is-url';
 
 export const passwordManager = async (req, res) => {
     try {
-        const {wesbiteURL, username, password } = req.body;
+        const {wesbiteURL, websiteName, username, password } = req.body;
 
 		if (!isUrl(wesbiteURL)) {
 			return res.status(400).json({ error: 'Invalid website URL.' });
 		}
 
-		if (!username || !password) {
+		if (!username || !websiteName || !password) {
 			return res.status(400).json({ error: 'One for more field is missing data.' });
 		}
 
@@ -20,6 +20,7 @@ export const passwordManager = async (req, res) => {
 
         const newPassword = new PasswordManager({
 			wesbiteURL,
+			websiteName,
 			username,
 			password: hashedPassword
 		});
@@ -30,6 +31,7 @@ export const passwordManager = async (req, res) => {
 			res.status(201).json({
 				_id: newPassword._id,
 				wesbiteURL: newPassword.wesbiteURL,
+				websiteName: newPassword.websiteName,
 				username: newPassword.username
 			});
 		} else {

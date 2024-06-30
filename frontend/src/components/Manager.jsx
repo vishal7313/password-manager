@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Manager = () => {
     const ref = useRef();
     const passwordRef = useRef();
-    const [form, setForm] = useState({ site: "", username: "", password: "" })
+    const [form, setForm] = useState({ site: "", websitename: "", username: "", password: "" })
     const [passwordArray, setPasswordArray] = useState([]);
 
     useEffect(() => {
@@ -80,15 +79,29 @@ const Manager = () => {
                 </h1>
                 <p className="text-green-900 text-center font-bold">My own Password Manager </p>
                 <div className="flex flex-col p-4 text-black gap-6 items-center">
-                    <input
-                        placeholder="Enter website URL"
-                        className="rounded-full border border-green-600 w-full p-4 py-1"
-                        type="text"
-                        name="site"
-                        id=""
-                        value={form.site}
-                        onChange={handleChange}
-                    />
+                    <div className="flex w-full justify-between gap-8">
+                        <input
+                            placeholder="Enter website URL"
+                            type="text"
+                            className="rounded-full border border-green-600 w-full p-4 py-1"
+                            name="site"
+                            id=""
+                            value={form.site}
+                            onChange={handleChange}
+                        />
+                        <div className="relative">
+                            <input
+                                placeholder="Enter wesbite name"
+                                type="text"
+                                className="rounded-full border border-green-600 w-full p-4 py-1"
+                                name="websitename"
+                                id="websitename"
+                                value={form.websitename}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    </div>
+
                     <div className="flex w-full justify-between gap-8">
                         <input
                             placeholder="Enter username"
@@ -136,6 +149,7 @@ const Manager = () => {
                         <table className="table-auto w-full rounded-xl overflow-hidden">
                             <thead className="bg-green-800 text-white">
                                 <tr>
+                                    <th className="py-2">Website Name</th>
                                     <th className="py-2">Website URL</th>
                                     <th className="py-2">Username</th>
                                     <th className="py-2">Password</th>
@@ -145,6 +159,19 @@ const Manager = () => {
                                 {
                                     passwordArray.map((item, index) => {
                                         return <tr key={index}>
+                                            <td className="py-2 border boerder-white text-center">
+                                                <div className="flex items-center justify-center">
+                                                    <span>{item.websitename}</span>
+                                                    <div className="lordiconcopy size-7 cursor-pointer" onClick={() => { copyText(item.websitename) }}>
+                                                        <lord-icon
+                                                            style={{ "width": "25px", "height": "25px", "paddingTop": "3px", "paddingLeft": "3px" }}
+                                                            className={"cursor-pointer"}
+                                                            src="https://cdn.lordicon.com/iykgtsbt.json"
+                                                            trigger="hover">
+                                                        </lord-icon>
+                                                    </div>
+                                                </div>
+                                            </td>
                                             <td className="justify-center py-2 border boerder-white text-center">
                                                 <div className="flex items-center justify-center">
                                                     <a href={item.site} target="_blank" rel="noreferrer">
