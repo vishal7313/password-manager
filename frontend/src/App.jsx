@@ -1,4 +1,5 @@
 import './App.css'
+import Footer from './components/Footer.jsx';
 import Manager from './components/Manager.jsx';
 import Navbar from './components/Navbar.jsx';
 
@@ -7,6 +8,7 @@ function App() {
       <>
         <Navbar />
         <Manager />
+        <Footer />
       </>
     )
 }
