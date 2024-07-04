@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -27,8 +28,8 @@ const Manager = () => {
     }
 
     const savePassword = () => {
-        setPasswordArray([...passwordArray, form]);
-        localStorage.setItem("password", JSON.stringify([...passwordArray, form]));
+        setPasswordArray([...passwordArray, {...form, id: uuidv4()}]);
+        localStorage.setItem("password", JSON.stringify([...passwordArray, {...form, id: uuidv4()}]));
         console.log([...passwordArray, form]);
     }
 
