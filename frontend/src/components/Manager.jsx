@@ -33,6 +33,20 @@ const Manager = () => {
         console.log([...passwordArray, form]);
     }
 
+    const deletePassword = (id) => {
+        console.log(id);
+        const filteredArray = passwordArray.filter((item) => item.id !== id);
+        setPasswordArray(filteredArray);
+        localStorage.setItem("password", JSON.stringify(filteredArray));
+    }
+
+    const editPassword = (id) => {
+        console.log(id);
+        // const filteredArray = passwordArray.filter((item) => item.id !== id);
+        // setPasswordArray(filteredArray);
+        // localStorage.setItem("password", JSON.stringify(filteredArray));
+    }
+
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
     }
@@ -216,7 +230,7 @@ const Manager = () => {
                                                 </div>
                                             </td>
                                             <td className="flex items-center justify-center py-2 border boerder-white text-center">
-                                                <span className="cursor-pointer mx-1">
+                                                <span className="cursor-pointer mx-1" onClick={() => {editPassword(item.id)}}>
                                                     <lord-icon
                                                         src="https://cdn.lordicon.com/ifsxxxte.json"
                                                         trigger="hover"
@@ -225,7 +239,7 @@ const Manager = () => {
                                                     </lord-icon>
                                                 </span>
 
-                                                <span className="cursor-pointer mx-1">
+                                                <span className="cursor-pointer mx-1" onClick={() => {deletePassword(item.id)}}>
                                                     <lord-icon
                                                         src="https://cdn.lordicon.com/skkahier.json"
                                                         trigger="hover"
