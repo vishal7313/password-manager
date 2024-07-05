@@ -31,20 +31,24 @@ const Manager = () => {
         setPasswordArray([...passwordArray, {...form, id: uuidv4()}]);
         localStorage.setItem("password", JSON.stringify([...passwordArray, {...form, id: uuidv4()}]));
         console.log([...passwordArray, form]);
+        setForm({ site: "", websitename: "", username: "", password: "" })
     }
 
     const deletePassword = (id) => {
         console.log(id);
-        const filteredArray = passwordArray.filter((item) => item.id !== id);
-        setPasswordArray(filteredArray);
-        localStorage.setItem("password", JSON.stringify(filteredArray));
+        const c = confirm('Do you want to delete this password?');
+        if (c) {
+            const filteredArray = passwordArray.filter((item) => item.id !== id);
+            setPasswordArray(filteredArray);
+            localStorage.setItem("password", JSON.stringify(filteredArray));
+        }
     }
 
     const editPassword = (id) => {
         console.log(id);
-        // const filteredArray = passwordArray.filter((item) => item.id !== id);
-        // setPasswordArray(filteredArray);
-        // localStorage.setItem("password", JSON.stringify(filteredArray));
+        setForm(passwordArray.find((item) => item.id === id));
+        const filteredArray = passwordArray.filter((item) => item.id !== id);
+        setPasswordArray(filteredArray);
     }
 
     const handleChange = (e) => {
