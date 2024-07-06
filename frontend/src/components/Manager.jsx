@@ -28,20 +28,32 @@ const Manager = () => {
     }
 
     const savePassword = () => {
-        setPasswordArray([...passwordArray, {...form, id: uuidv4()}]);
-        localStorage.setItem("password", JSON.stringify([...passwordArray, {...form, id: uuidv4()}]));
-        console.log([...passwordArray, form]);
-        setForm({ site: "", websitename: "", username: "", password: "" })
+        if (form.site.length > 3 && form.websitename.length > 3 && form.username.length > 3 && form.password.length > 8) {
+            setPasswordArray([...passwordArray, {...form, id: uuidv4()}]);
+            localStorage.setItem("password", JSON.stringify([...passwordArray, {...form, id: uuidv4()}]));
+            console.log([...passwordArray, form]);
+            setForm({ site: "", websitename: "", username: "", password: "" })
 
-        toast('Password saved successfully', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            theme: "dark"
-        });
+            toast('Password saved successfully', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "dark"
+            });
+        } else {
+            toast('Error: Please fill all fields correctly', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "dark"
+            });
+        }
     }
 
     const deletePassword = (id) => {
@@ -104,10 +116,11 @@ const Manager = () => {
             {/* Same as */}
             <ToastContainer />
             <div
-                className="absolute inset-0 -z-10 h-full w-full bg-green-50 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"
-            ></div>
+                className="absolute inset-0 -z-10 h-full w-full"
+            >
+            </div>
 
-            <div className="mx-auto mycontainer">
+            <div className="p-2 md:p-0 md:mycontainer min-h-[88.6vh]">
                 <h1 className="text-4xl text font-bold text-center">
                     <span className="text-green-500">&lt;</span>
                     Pass
@@ -115,13 +128,13 @@ const Manager = () => {
                 </h1>
                 <p className="text-green-900 text-center font-bold">My own Password Manager </p>
                 <div className="flex flex-col p-4 text-black gap-6 items-center">
-                    <div className="flex w-full justify-between gap-8">
+                    <div className="flex flex-col md:flex-row w-full justify-between gap-8">
                         <input
                             placeholder="Enter website URL"
                             type="text"
                             className="rounded-full border border-green-600 w-full p-4 py-1"
                             name="site"
-                            id=""
+                            id="site"
                             value={form.site}
                             onChange={handleChange}
                         />
@@ -138,13 +151,13 @@ const Manager = () => {
                         </div>
                     </div>
 
-                    <div className="flex w-full justify-between gap-8">
+                    <div className="flex flex-col md:flex-row w-full justify-between gap-8">
                         <input
                             placeholder="Enter username"
                             type="textbox"
                             className="rounded-full border border-green-600 w-full p-4 py-1"
                             name="username"
-                            id=""
+                            id="username"
                             value={form.username}
                             onChange={handleChange}
                         />
@@ -182,7 +195,7 @@ const Manager = () => {
                     {
                         passwordArray.length !== 0 &&
 
-                        <table className="table-auto w-full rounded-xl overflow-hidden">
+                        <table className="table-auto w-full rounded-xl overflow-hidden mb-10">
                             <thead className="bg-green-800 text-white">
                                 <tr>
                                     <th className="py-2">Website Name</th>
