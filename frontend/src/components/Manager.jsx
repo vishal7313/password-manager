@@ -32,6 +32,16 @@ const Manager = () => {
         localStorage.setItem("password", JSON.stringify([...passwordArray, {...form, id: uuidv4()}]));
         console.log([...passwordArray, form]);
         setForm({ site: "", websitename: "", username: "", password: "" })
+
+        toast('Password saved successfully', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "dark"
+        });
     }
 
     const deletePassword = (id) => {
@@ -42,6 +52,16 @@ const Manager = () => {
             setPasswordArray(filteredArray);
             localStorage.setItem("password", JSON.stringify(filteredArray));
         }
+
+        toast('Password deleted successfully', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "dark",
+        });
     }
 
     const editPassword = (id) => {
@@ -63,10 +83,8 @@ const Manager = () => {
             closeOnClick: true,
             pauseOnHover: true,
             draggable: true,
-            progress: undefined,
-            theme: "light",
-            transition: "Bounce"
-            });
+            theme: "dark"
+        });
         navigator.clipboard.writeText(text);
     }
     return (
@@ -81,8 +99,7 @@ const Manager = () => {
                 pauseOnFocusLoss
                 draggable
                 pauseOnHover
-                theme="light"
-                transition= "Bounce"
+                theme="dark"
             />
             {/* Same as */}
             <ToastContainer />
