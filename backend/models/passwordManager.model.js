@@ -1,6 +1,10 @@
 import mongoose from "mongoose";
 
 const passwordManagerSchema = new mongoose.Schema({
+    clientID: {
+        type: String,
+        required: true
+    },
     wesbiteURL: {
         type: String,
         required: true

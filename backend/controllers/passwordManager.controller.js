@@ -4,7 +4,7 @@ import isUrl from 'is-url';
 
 export const passwordManager = async (req, res) => {
     try {
-        const {wesbiteURL, websiteName, username, password } = req.body;
+        const {clientID, wesbiteURL, websiteName, username, password } = req.body;
 
 		if (!isUrl(wesbiteURL)) {
 			return res.status(400).json({ error: 'Invalid website URL.' });
@@ -19,6 +19,7 @@ export const passwordManager = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, salt);
 
         const newPassword = new PasswordManager({
+			clientID,
 			wesbiteURL,
 			websiteName,
 			username,
@@ -30,6 +31,7 @@ export const passwordManager = async (req, res) => {
 
 			res.status(201).json({
 				_id: newPassword._id,
+				clientID: newPassword.clientID,
 				wesbiteURL: newPassword.wesbiteURL,
 				websiteName: newPassword.websiteName,
 				username: newPassword.username

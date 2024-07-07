@@ -20,10 +20,6 @@ const userSchema = new mongoose.Schema({
         required: true,
         enum:['male', 'female']
     },
-    profilePic: {
-        type: String,
-        default: ''
-    }
     // createdAt, updatedAt => message.createdAt: 15:30
 }, {timestamps: true});
 
