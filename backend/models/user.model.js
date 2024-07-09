@@ -14,12 +14,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         minlength: 6
-    },
-    gender:{
-        type: String,
-        required: true,
-        enum:['male', 'female']
-    },
+    }
     // createdAt, updatedAt => message.createdAt: 15:30
 }, {timestamps: true});
 
