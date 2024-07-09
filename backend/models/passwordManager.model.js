@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const passwordManagerSchema = new mongoose.Schema({
+const passwordManagerModel = new mongoose.Schema({
     clientID: {
         type: String,
         required: true
@@ -24,6 +24,6 @@ const passwordManagerSchema = new mongoose.Schema({
     // createdAt, updatedAt => message.createdAt: 15:30
 }, {timestamps: true});
 
-const PasswordManager = mongoose.model("PasswordManager", passwordManagerSchema);
+const passwordManagerSchema = mongoose.model("PasswordManager", passwordManagerModel);
 
-export default PasswordManager;
+export default passwordManagerSchema;

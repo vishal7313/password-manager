@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import PasswordManager from "../models/passwordManager.model.js";
+import passwordManagerSchema from "../models/passwordManager.model.js";
 import isUrl from 'is-url';
 
 export const passwordManager = async (req, res) => {
@@ -18,7 +18,7 @@ export const passwordManager = async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
 
-        const newPassword = new PasswordManager({
+        const newPassword = new passwordManagerSchema({
 			clientID,
 			wesbiteURL,
 			websiteName,
@@ -43,4 +43,25 @@ export const passwordManager = async (req, res) => {
         console.log('Error in adding new password controller', error.message);
 		res.status(500).json({ error: 'Internal Server Error' });
     }
+}
+
+export const getPassword = async (req, res) => {
+    try {
+        const incomes = await passwordManagerSchema.find().sort({createdAt: -1});
+        res.status(200).json(incomes);
+    } catch (error) {
+		res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
+
+export const deletePassword = async (req, res) => {
+    const {clientID} = req.params;
+
+    passwordManagerSchema.findByIdAndDelete(clientID)
+		.then(() => {
+			res.status(200).json({ message: "Password deleted successfully" });
+		})
+		.catch((error) => {
+			res.status(500).json({ error: "Internal Server Error" }); 
+		})
 }
